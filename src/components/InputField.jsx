@@ -5,7 +5,9 @@ function InputField() {
     <div id="input-field">
       <label htmlFor="input-task">Adicionar tarefa</label>
       <input type="text" id="input-task" placeholder="Adicione sua tarefa" />
-      <button>+</button>
+      <button>
+        <span>+</span>
+      </button>
     </div>
   )
 }
