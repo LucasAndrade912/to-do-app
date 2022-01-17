@@ -10,7 +10,7 @@ function App() {
     <Fragment>
       <h1>To-do list</h1>
 
-      <InputField />
+      <InputField tasks={tasks} setTasks={setTasks} />
       {
         tasks.length === 0
           ? <EmptyTasks />
