@@ -3,7 +3,7 @@ import Task from './Task'
 
 function Tasks() {
   return (
-    <div className="tasks">
+    <div id="tasks">
       <Task name="Task 1" />
       <Task name="Task 2" />
       <Task name="Task 3" />

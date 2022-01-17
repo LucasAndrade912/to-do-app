@@ -8,7 +8,6 @@
 }
 
 #root {
-  /* border: 1px solid black; */
   width: min(90vw, 21.875rem);
   margin: auto;
   margin-top: 3.75rem;
@@ -56,4 +55,92 @@ h1 {
   font-size: 2rem;
   cursor: pointer;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+#tasks {
+  margin-top: 2rem;
+}
+
+#tasks .task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1.25rem;
+  background-color: #DBDBDB;
+  border: 1px solid rgba(0, 0, 0, 0.6);
+}
+
+#tasks .task:not(.task:last-child) {
+  border-bottom: 0;
+}
+
+#tasks .task:first-child {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+#tasks .task:last-child {
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.task #btn-remove-task {
+  background-color: #F85858;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+  border: none;
+  border-radius: 1.5px;
+  width: 2.5rem;
+  height: 1.5rem;
+  color: #FFF;
+  cursor: pointer;
+}
+
+.task .task-item {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-left: 2.1875rem;
+  cursor: pointer;
+}
+
+.task-item input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  width: 0;
+  height: 0;
+}
+
+.task-item .checkmark {
+  position: absolute;
+  top: 1;
+  left: 0;
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: 2px;
+  background-color: #FFF;
+}
+
+.task-item input:checked ~ .checkmark {
+  background-color: #5B57D1;
+}
+
+.task-item .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.task-item input:checked ~ .checkmark:after {
+  display: block;
 }

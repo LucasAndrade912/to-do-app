@@ -3,10 +3,11 @@ import React from 'react'
 function Task(props) {
   return (
     <div className="task">
-      <div className="task-item">
+      <label className="task-item">
+        {props.name}
         <input type="checkbox" />
-        <span>{props.name}</span>
-      </div>
+        <span className="checkmark"></span>
+      </label>
 
       <button id="btn-remove-task">x</button>
     </div>
