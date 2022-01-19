@@ -7,11 +7,21 @@ function InputField(props) {
   const handleTask = event => setTask(event.target.value)
 
   const addTask = () => {
-    let newArray = [ ...tasks ]
-    newArray.push(task)
+    try {
+      validateField()
 
-    setTask('')
-    setTasks(newArray)
+      let newArray = [ ...tasks ]
+      newArray.push(task)
+  
+      setTask('')
+      setTasks(newArray) 
+    } catch (error) {
+      alert(error.message)
+    }
+  }
+
+  const validateField = () => {
+    if (task.trim() === '') throw new Error('Por favor, preencha o campo de entrada')
   }
 
   return (
