@@ -5,6 +5,7 @@ import EmptyTasks from './components/EmptyTasks';
 
 function App() {
   const [tasks, setTasks] = useState([])
+  const [finishedTasks, setFinishedTasks] = useState([])
 
   return (
     <Fragment>
@@ -14,7 +15,12 @@ function App() {
       {
         tasks.length === 0
           ? <EmptyTasks />
-          : <Tasks tasks={tasks} />
+          : <Tasks
+              tasks={tasks}
+              setTasks={setTasks}
+              finishedTasks={finishedTasks}
+              setFinishedTasks={setFinishedTasks}
+            />
       }
     </Fragment>
   )
