@@ -126,29 +126,6 @@ h1 {
   background-color: #FFF;
 }
 
-.task-item input:checked ~ .checkmark {
-  background-color: #5B57D1;
-}
-
-.task-item .checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-  left: 6px;
-  top: 2px;
-  width: 4px;
-  height: 8px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-
-.task-item input:checked ~ .checkmark:after {
-  display: block;
-}
-
 #empty {
   display: flex;
   justify-content: center;
