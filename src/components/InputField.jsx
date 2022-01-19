@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { saveTasksInLocalStorage } from '../utils/localStorage'
 
 function InputField(props) {
   const { tasks, setTasks } = props
@@ -14,6 +15,7 @@ function InputField(props) {
       newArray.push(task)
   
       setTask('')
+      saveTasksInLocalStorage(newArray)
       setTasks(newArray) 
     } catch (error) {
       alert(error.message)

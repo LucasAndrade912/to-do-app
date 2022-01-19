@@ -2,9 +2,10 @@ import { Fragment, useState } from 'react'
 import InputField from './components/InputField';
 import Tasks from './components/Tasks';
 import EmptyTasks from './components/EmptyTasks';
+import { getTasks } from './utils/localStorage'
 
 function App() {
-  const [tasks, setTasks] = useState([])
+  const [tasks, setTasks] = useState(getTasks || [])
   const [finishedTasks, setFinishedTasks] = useState([])
 
   return (

@@ -1,4 +1,5 @@
 import React from 'react'
+import { saveTasksInLocalStorage } from '../utils/localStorage'
 
 function Task(props) {
   const {
@@ -14,6 +15,7 @@ function Task(props) {
     let newArray = [ ...tasks ]
     newArray.splice(id, 1)
 
+    saveTasksInLocalStorage(newArray)
     setTasks(newArray)
   }
 
@@ -27,6 +29,7 @@ function Task(props) {
     let newArray = [ ...tasks ]
     newArray.splice(id, 1)
 
+    saveTasksInLocalStorage(newArray)
     setTasks(newArray)
     saveFinishedTasks()
   }
