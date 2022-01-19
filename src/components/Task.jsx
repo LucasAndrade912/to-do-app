@@ -10,6 +10,13 @@ function Task(props) {
     setFinishedTasks
   } = props
 
+  const removeTask = () => {
+    let newArray = [ ...tasks ]
+    newArray.splice(id, 1)
+
+    setTasks(newArray)
+  }
+
   const saveFinishedTasks = () => {
     let newArrayFinishedTasks = [ ...finishedTasks ]
     newArrayFinishedTasks.push(name)
@@ -32,7 +39,7 @@ function Task(props) {
         <span className="checkmark"></span>
       </label>
 
-      <button id="btn-remove-task">x</button>
+      <button id="btn-remove-task" onClick={removeTask}>x</button>
     </div>
   )
 }
