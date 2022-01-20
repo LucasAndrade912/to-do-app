@@ -5,7 +5,7 @@ import EmptyTasks from './components/EmptyTasks';
 import { getTasks } from './utils/localStorage'
 
 function App() {
-  const [tasks, setTasks] = useState(getTasks || [])
+  const [tasks, setTasks] = useState(getTasks() || [])
   const [finishedTasks, setFinishedTasks] = useState([])
 
   return (
