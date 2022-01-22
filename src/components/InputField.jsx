@@ -15,7 +15,7 @@ function InputField(props) {
       newArray.push(task)
   
       setTask('')
-      saveTasksInLocalStorage(newArray)
+      saveTasksInLocalStorage('tasks', newArray)
       setTasks(newArray) 
     } catch (error) {
       alert(error.message)

@@ -15,7 +15,7 @@ function Task(props) {
     let newArray = [ ...tasks ]
     newArray.splice(id, 1)
 
-    saveTasksInLocalStorage(newArray)
+    saveTasksInLocalStorage('tasks', newArray)
     setTasks(newArray)
   }
 
@@ -23,13 +23,14 @@ function Task(props) {
     let newArrayFinishedTasks = [ ...finishedTasks ]
     newArrayFinishedTasks.push(name)
     setFinishedTasks(newArrayFinishedTasks)
+    saveTasksInLocalStorage('finished-tasks', newArrayFinishedTasks)
   }
 
   const finishTask = () => {
     let newArray = [ ...tasks ]
     newArray.splice(id, 1)
 
-    saveTasksInLocalStorage(newArray)
+    saveTasksInLocalStorage('tasks', newArray)
     setTasks(newArray)
     saveFinishedTasks()
   }
