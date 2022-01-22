@@ -1,15 +1,9 @@
-import React from 'react'
+import { useContext } from 'react'
+import { TasksContext } from '../context/tasksContext'
 import { saveTasksInLocalStorage } from '../utils/localStorage'
 
-function Task(props) {
-  const {
-    name,
-    id,
-    tasks,
-    setTasks,
-    finishedTasks,
-    setFinishedTasks
-  } = props
+function Task({ id, taskName, tasks }) {
+  const [setTasks, setFinishedTasks, finishedTasks] = useContext(TasksContext)
 
   const removeTask = () => {
     let newArray = [ ...tasks ]
@@ -21,7 +15,7 @@ function Task(props) {
 
   const saveFinishedTasks = () => {
     let newArrayFinishedTasks = [ ...finishedTasks ]
-    newArrayFinishedTasks.push(name)
+    newArrayFinishedTasks.push(taskName)
     setFinishedTasks(newArrayFinishedTasks)
     saveTasksInLocalStorage('finished-tasks', newArrayFinishedTasks)
   }
@@ -38,7 +32,7 @@ function Task(props) {
   return (
     <div className="task">
       <label className="task-item">
-        {name}
+        {taskName}
         <input type="checkbox" onClick={finishTask} />
         <span className="checkmark"></span>
       </label>

@@ -1,26 +1,16 @@
 import React from 'react'
 import Task from './Task'
 
-function Tasks(props) {
-  const {
-    tasks,
-    setTasks,
-    finishedTasks,
-    setFinishedTasks
-  } = props
-
+function Tasks({ tasks }) {
   return (
     <div id="tasks">
       {
         tasks.map((task, index) => (
           <Task
             key={index}
-            name={task}
             id={index}
+            taskName={task}
             tasks={tasks}
-            setTasks={setTasks}
-            finishedTasks={finishedTasks}
-            setFinishedTasks={setFinishedTasks}
           />
         ))
       }
