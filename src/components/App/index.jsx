@@ -7,8 +7,8 @@ import { getTasks } from '../../utils/localStorage'
 import './style.css'
 
 function App() {
-  const [tasks, setTasks] = useState(getTasks() || [])
-  const [finishedTasks, setFinishedTasks] = useState([])
+  const [tasks, setTasks] = useState(getTasks('tasks') || [])
+  const [finishedTasks, setFinishedTasks] = useState(getTasks('finished-tasks') || [])
 
   const contextValue = [tasks, setTasks, setFinishedTasks, finishedTasks]
 
