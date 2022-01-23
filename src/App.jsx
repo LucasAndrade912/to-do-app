@@ -1,6 +1,6 @@
 import { Fragment, useState } from 'react'
 import InputField from './components/InputField';
-import Tasks from './components/Tasks';
+import TasksArea from './components/TasksArea';
 import EmptyTasks from './components/EmptyTasks';
 import { TasksProvider } from './context/tasksContext';
 import { getTasks } from './utils/localStorage'
@@ -8,6 +8,8 @@ import { getTasks } from './utils/localStorage'
 function App() {
   const [tasks, setTasks] = useState(getTasks() || [])
   const [finishedTasks, setFinishedTasks] = useState([])
+
+  const contextValue = [tasks, setTasks, setFinishedTasks, finishedTasks]
 
   return (
     <Fragment>
@@ -17,8 +19,8 @@ function App() {
       {
         tasks.length === 0
           ? <EmptyTasks />
-          : <TasksProvider value={[setTasks, setFinishedTasks, finishedTasks]}>
-              <Tasks tasks={tasks} />
+          : <TasksProvider value={contextValue}>
+              <TasksArea />
             </TasksProvider>
       }
     </Fragment>

@@ -2,8 +2,8 @@ import { useContext } from 'react'
 import { TasksContext } from '../context/tasksContext'
 import { saveTasksInLocalStorage } from '../utils/localStorage'
 
-function Task({ id, taskName, tasks }) {
-  const [setTasks, setFinishedTasks, finishedTasks] = useContext(TasksContext)
+function Task({ id, taskName }) {
+  const [tasks, setTasks, setFinishedTasks, finishedTasks] = useContext(TasksContext)
 
   const removeTask = () => {
     let newArray = [ ...tasks ]

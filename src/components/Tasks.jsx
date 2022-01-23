@@ -1,7 +1,10 @@
-import React from 'react'
+import { useContext } from 'react'
+import { TasksContext } from '../context/tasksContext'
 import Task from './Task'
 
-function Tasks({ tasks }) {
+function Tasks() {
+  const [tasks] = useContext(TasksContext)
+
   return (
     <div id="tasks">
       {
@@ -10,7 +13,6 @@ function Tasks({ tasks }) {
             key={index}
             id={index}
             taskName={task}
-            tasks={tasks}
           />
         ))
       }
