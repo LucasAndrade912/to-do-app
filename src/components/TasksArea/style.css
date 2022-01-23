@@ -1,0 +1,26 @@
+#tasks-area {
+  margin-top: 2rem;
+}
+
+#tasks-area #buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+#buttons button {
+  width: 30%;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFF;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  border: 1.5px solid rgba(0, 0, 0, 0.4);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+#buttons button:hover {
+  background-color: #ebe8e8;
+}

@@ -1,6 +1,7 @@
 import { useContext } from 'react'
-import { TasksContext } from '../context/tasksContext'
-import Task from './Task'
+import { TasksContext } from '../../context/tasksContext'
+import Task from '../Task/index'
+import './style.css'
 
 function Tasks() {
   const [tasks] = useContext(TasksContext)

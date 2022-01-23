@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { saveTasksInLocalStorage } from '../utils/localStorage'
+import { saveTasksInLocalStorage } from '../../utils/localStorage'
+import './style.css'
 
 function InputField(props) {
   const { tasks, setTasks } = props

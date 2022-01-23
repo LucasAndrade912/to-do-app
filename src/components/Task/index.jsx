@@ -1,6 +1,7 @@
 import { useContext } from 'react'
-import { TasksContext } from '../context/tasksContext'
-import { saveTasksInLocalStorage } from '../utils/localStorage'
+import { TasksContext } from '../../context/tasksContext'
+import { saveTasksInLocalStorage } from '../../utils/localStorage'
+import './style.css'
 
 function Task({ id, taskName }) {
   const [tasks, setTasks, setFinishedTasks, finishedTasks] = useContext(TasksContext)

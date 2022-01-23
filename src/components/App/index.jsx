@@ -1,9 +1,10 @@
 import { Fragment, useState } from 'react'
-import InputField from './components/InputField';
-import TasksArea from './components/TasksArea';
-import EmptyTasks from './components/EmptyTasks';
-import { TasksProvider } from './context/tasksContext';
-import { getTasks } from './utils/localStorage'
+import InputField from '../InputField/index';
+import TasksArea from '../TasksArea/index';
+import EmptyTasks from '../EmptyTasks/index';
+import { TasksProvider } from '../../context/tasksContext';
+import { getTasks } from '../../utils/localStorage'
+import './style.css'
 
 function App() {
   const [tasks, setTasks] = useState(getTasks() || [])

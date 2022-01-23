@@ -1,5 +1,6 @@
 import React from 'react'
-import Tasks from './Tasks'
+import Tasks from '../Tasks/index'
+import './style.css'
 
 function TasksArea() {
   return (
