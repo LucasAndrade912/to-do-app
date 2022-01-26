@@ -1,9 +1,11 @@
-import { useContext } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { TasksContext } from '../../context/tasksContext'
 import { saveTasksInLocalStorage } from '../../utils/localStorage'
 import './style.css'
 
-function Task({ id, taskName }) {
+function Task({ id, taskName, type }) {
+  const [isChecked, setIsChecked] = useState(false)
+
   const [
     tasks,
     setTasks,
@@ -52,11 +54,23 @@ function Task({ id, taskName }) {
     }
   }
 
+  useEffect(() => {
+    if (type === 'finishedTasks') {
+      setIsChecked(true)
+    } else {
+      setIsChecked(false)
+    }
+  }, [type])
+
   return (
     <div className="task">
       <label className="task-item">
         {taskName}
-        <input type="checkbox" onClick={finishTask} />
+        <input
+          type="checkbox"
+          checked={isChecked}
+          onChange={finishTask}
+        />
         <span className="checkmark"></span>
       </label>
 

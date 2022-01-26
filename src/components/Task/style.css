@@ -58,3 +58,32 @@
   border-radius: 2px;
   background-color: #FFF;
 }
+
+.task-item:hover input ~ .checkmark {
+  background-color: #CCC;
+}
+
+/* Quando o checkbox é clicado, adicionar um fundo rosa */
+.task-item input:checked ~ .checkmark {
+  background-color: #5B57D1;
+}
+
+.task-item .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 5px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: solid #FFF;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/* Exibir o ícone quando selecionado */
+.task-item input:checked ~ .checkmark:after {
+  display: block;
+}

@@ -17,6 +17,7 @@ function Tasks() {
             key={index}
             id={index}
             taskName={task}
+            type={tasks[0]}
           />
         ))
       }
