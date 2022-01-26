@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import { saveTasksInLocalStorage } from '../../utils/localStorage'
 import './style.css'
 
-function InputField(props) {
-  const { tasks, setTasks } = props
+function InputField({ activeTasks, setActiveTasks }) {
   const [task, setTask] = useState('')
 
   const handleTask = event => setTask(event.target.value)
@@ -12,12 +11,12 @@ function InputField(props) {
     try {
       validateField()
 
-      let newArray = [ ...tasks ]
+      let newArray = [ ...activeTasks ]
       newArray.push(task)
   
       setTask('')
       saveTasksInLocalStorage('tasks', newArray)
-      setTasks(newArray) 
+      setActiveTasks(newArray) 
     } catch (error) {
       alert(error.message)
     }
