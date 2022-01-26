@@ -4,14 +4,34 @@ import { saveTasksInLocalStorage } from '../../utils/localStorage'
 import './style.css'
 
 function Task({ id, taskName }) {
-  const [tasks, setTasks, setFinishedTasks, finishedTasks] = useContext(TasksContext)
+  const [
+    tasks,
+    setTasks,
+    activeTasks,
+    setActiveTasks,
+    setFinishedTasks,
+    finishedTasks,
+  ] = useContext(TasksContext)
 
   const removeTask = () => {
-    let newArray = [ ...tasks ]
+    let key, state, setState = null
+
+    if (tasks[0] === 'activeTasks') {
+      key = 'tasks'
+      state = activeTasks
+      setState = setActiveTasks
+    } else {
+      key = 'finished-tasks'
+      state = finishedTasks
+      setState = setFinishedTasks
+    }
+
+    let newArray = [ ...state ]
     newArray.splice(id, 1)
 
-    saveTasksInLocalStorage('tasks', newArray)
-    setTasks(newArray)
+    saveTasksInLocalStorage(key, newArray)
+    setTasks([tasks[0], newArray])
+    setState(newArray)
   }
 
   const saveFinishedTasks = () => {
@@ -22,12 +42,14 @@ function Task({ id, taskName }) {
   }
 
   const finishTask = () => {
-    let newArray = [ ...tasks ]
-    newArray.splice(id, 1)
+    if (tasks[0] !== 'finishedTasks') {
+      let newArray = [ ...activeTasks ]
+      newArray.splice(id, 1)
 
-    saveTasksInLocalStorage('tasks', newArray)
-    setTasks(newArray)
-    saveFinishedTasks()
+      saveTasksInLocalStorage('tasks', newArray)
+      setActiveTasks(newArray)
+      saveFinishedTasks()
+    }
   }
 
   return (

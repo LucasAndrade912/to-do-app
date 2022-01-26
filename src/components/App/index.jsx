@@ -11,8 +11,6 @@ function App() {
   const [activeTasks, setActiveTasks] = useState(getTasks('tasks') || [])
   const [finishedTasks, setFinishedTasks] = useState(getTasks('finished-tasks') || [])
 
-  console.log(tasks);
-
   const contextValue = [
     tasks,
     setTasks,
