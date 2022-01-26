@@ -5,7 +5,7 @@ import { getTasks } from '../../utils/localStorage'
 import './style.css'
 
 function TasksArea() {
-  const [_, setTasks] = useContext(TasksContext)
+  const setTasks = useContext(TasksContext)[1]
 
   const showFinishedTasks = () => {
     const finishedTasks = getTasks('finished-tasks')

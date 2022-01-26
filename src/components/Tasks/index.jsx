@@ -7,7 +7,7 @@ import './style.css'
 function Tasks() {
   const [tasks] = useContext(TasksContext)
 
-  if (!tasks[1]) return <EmptyTasks />
+  if (!tasks[1] || tasks[1].length === 0) return <EmptyTasks />
 
   return (
     <div id="tasks">
