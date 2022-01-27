@@ -24,7 +24,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x]  O usuário poderá deletar a tarefa da lista clicando no botão de deletar
 - [x]  As tarefas ficarão salvas no `localStorage` do navegador
 - [x]  O usuário não poderá adicionar uma tarefa com o campo de `input` vazio
-- [ ]  O usuário poderá ver as tarefas concluídas e ativas
+- [x]  O usuário poderá ver as tarefas concluídas e ativas
 - [ ]  O usuário poderá ver as todas tarefas
 - [ ]  O usuário poderá editar uma tarefa clicando no texto da tarefa
 - [ ]  Dark mode
