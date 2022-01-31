@@ -12,7 +12,7 @@ function InputField({ activeTasks, setActiveTasks }) {
       validateField()
 
       let newArray = [ ...activeTasks ]
-      newArray.push(task)
+      newArray.push({ type: 'active', taskName: task })
   
       setTask('')
       saveTasksInLocalStorage('tasks', newArray)

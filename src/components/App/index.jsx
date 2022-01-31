@@ -8,8 +8,8 @@ import './style.css'
 
 function App() {
   const [tasks, setTasks] = useState([])
-  const [activeTasks, setActiveTasks] = useState(getTasks('tasks') || [])
-  const [finishedTasks, setFinishedTasks] = useState(getTasks('finished-tasks') || [])
+  const [activeTasks, setActiveTasks] = useState(getTasks('tasks'))
+  const [finishedTasks, setFinishedTasks] = useState(getTasks('finished-tasks'))
 
   const contextValue = [
     tasks,

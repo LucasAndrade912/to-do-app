@@ -38,7 +38,7 @@ function Task({ id, taskName, type }) {
 
   const saveFinishedTasks = () => {
     let newArrayFinishedTasks = [ ...finishedTasks ]
-    newArrayFinishedTasks.push(taskName)
+    newArrayFinishedTasks.push({ type: 'finished', taskName: taskName })
     setFinishedTasks(newArrayFinishedTasks)
     saveTasksInLocalStorage('finished-tasks', newArrayFinishedTasks)
   }
@@ -55,7 +55,7 @@ function Task({ id, taskName, type }) {
   }
 
   useEffect(() => {
-    if (type === 'finishedTasks') {
+    if (type === 'finished') {
       setIsChecked(true)
     } else {
       setIsChecked(false)

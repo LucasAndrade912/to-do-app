@@ -7,7 +7,7 @@ import './style.css'
 function Tasks() {
   const [tasks] = useContext(TasksContext)
 
-  if (!tasks[1] || tasks[1].length === 0) return <EmptyTasks />
+  if (tasks.length === 0 || tasks[1].length === 0) return <EmptyTasks />
 
   return (
     <div id="tasks">
@@ -16,8 +16,8 @@ function Tasks() {
           <Task
             key={index}
             id={index}
-            taskName={task}
-            type={tasks[0]}
+            taskName={task.taskName}
+            type={task.type}
           />
         ))
       }
