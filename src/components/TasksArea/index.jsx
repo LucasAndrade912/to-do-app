@@ -17,11 +17,22 @@ function TasksArea() {
     setTasks(['activeTasks', activeTasks])
   }
 
+  const showAllTasks = () => {
+    // pegar tasks ativas
+    const activeTasks = getTasks('tasks')
+    // pegar tasks concluidas
+    const finishedTasks = getTasks('finished-tasks')
+    // juntar elas em um novo array
+    const allTasks = activeTasks.concat(finishedTasks)
+    // mostrar na tela
+    setTasks(['all', allTasks])
+  }
+
   return (
     <div id="tasks-area">
       <div id="buttons">
         <button onClick={showActiveTasks}>Ativas</button>
-        <button>Todas</button>
+        <button onClick={showAllTasks}>Todas</button>
         <button onClick={showFinishedTasks}>Finalizadas</button>
       </div>
 

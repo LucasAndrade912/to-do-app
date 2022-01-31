@@ -44,7 +44,7 @@ function Task({ id, taskName, type }) {
   }
 
   const finishTask = () => {
-    if (tasks[0] !== 'finishedTasks') {
+    if (type !== 'finished') {
       let newArray = [ ...activeTasks ]
       newArray.splice(id, 1)
 
