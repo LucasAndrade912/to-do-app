@@ -35,6 +35,7 @@ function InputField({ activeTasks, setActiveTasks }) {
         placeholder="Adicione sua tarefa"
         value={task}
         onChange={handleTask}
+        autoComplete="off"
       />
       <button onClick={addTask}>
         <span>+</span>
