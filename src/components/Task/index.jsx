@@ -3,7 +3,7 @@ import { TasksContext } from '../../context/tasksContext'
 import { saveTasksInLocalStorage } from '../../utils/localStorage'
 import './style.css'
 
-function Task({ id, taskName, type }) {
+function Task({ id, taskName, type, tasksType }) {
   const [isChecked, setIsChecked] = useState(false)
 
   const [
@@ -44,7 +44,7 @@ function Task({ id, taskName, type }) {
   }
 
   const finishTask = () => {
-    if (type !== 'finished') {
+    if (type !== 'finished' && tasksType !== 'all') {
       let newArray = [ ...activeTasks ]
       newArray.splice(id, 1)
 
@@ -74,7 +74,16 @@ function Task({ id, taskName, type }) {
         <span className="checkmark"></span>
       </label>
 
-      <button id="btn-remove-task" onClick={removeTask}>x</button>
+      <button
+        id="btn-remove-task"
+        onClick={
+          tasksType !== 'all'
+            ? removeTask
+            : null
+        }
+      >
+          x
+      </button>
     </div>
   )
 }
