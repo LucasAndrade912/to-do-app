@@ -26,7 +26,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x]  O usuário não poderá adicionar uma tarefa com o campo de `input` vazio
 - [x]  O usuário poderá ver as tarefas concluídas e ativas
 - [x]  O usuário poderá ver as todas tarefas
-- [ ]  O usuário poderá editar uma tarefa clicando no texto da tarefa
+- [x]  O usuário poderá editar uma tarefa clicando no texto da tarefa
 - [ ]  Dark mode
 
 ## 🚀 Instalando to-do-app
