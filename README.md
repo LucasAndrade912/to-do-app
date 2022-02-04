@@ -39,6 +39,16 @@ git clone https://github.com/LucasAndrade912/to-do-app.git
 
 ## 🛸 Executando o projeto
 
+Instale as dependências do projeto:
+
+```bash
+npm install
+
+# or
+
+yarn install
+```
+
 Para executar o projeto utilize o comando:
 
 ```bash
