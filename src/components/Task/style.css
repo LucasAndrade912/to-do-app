@@ -1,3 +1,11 @@
+input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 1.125rem;
+  height: 1.125rem;
+  cursor: pointer;
+}
+
 .task {
   display: flex;
   justify-content: space-between;
@@ -34,46 +42,31 @@
 }
 
 .task .task-item {
+  position: relative;
   display: flex;
   align-items: center;
-  position: relative;
-  padding-left: 2.1875rem;
-  cursor: pointer;
 }
 
-.task-item input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  width: 0;
-  height: 0;
-}
-
-.task-item .checkmark {
-  position: absolute;
-  top: 1;
-  left: 0;
+.checkmark {
+  display: block;
   width: 1.125rem;
   height: 1.125rem;
-  border-radius: 2px;
   background-color: #FFF;
+  cursor: pointer;
+  border-radius: 2px;
+  margin-right: 1rem;
 }
 
-.task-item:hover input ~ .checkmark {
-  background-color: #CCC;
-}
-
-/* Quando o checkbox é clicado, adicionar um fundo rosa */
-.task-item input:checked ~ .checkmark {
+input[type="checkbox"]:checked ~ .checkmark {
   background-color: #5B57D1;
 }
 
-.task-item .checkmark:after {
+.checkmark:after {
   content: "";
   position: absolute;
   display: none;
   left: 5px;
-  top: 1px;
+  top: 5px;
   width: 5px;
   height: 10px;
   border: solid #FFF;
@@ -83,7 +76,6 @@
   transform: rotate(45deg);
 }
 
-/* Exibir o ícone quando selecionado */
-.task-item input:checked ~ .checkmark:after {
+input[type="checkbox"]:checked ~ .checkmark:after {
   display: block;
 }

@@ -5,6 +5,8 @@ import './style.css'
 
 function Task({ id, taskName, type, tasksType }) {
   const [isChecked, setIsChecked] = useState(false)
+  const [updatedTasks, setUpdatedTasks] = useState([])
+  const [updated, setUpdated] = useState(false)
 
   const [
     tasks,
@@ -54,6 +56,28 @@ function Task({ id, taskName, type, tasksType }) {
     }
   }
 
+  const handleUpdateTask = event => {
+    const { textContent } = event.currentTarget
+
+    const updatedArray = activeTasks.map((activeTask, index) => {
+      if (index === id) {
+        activeTask.taskName = textContent
+      }
+      
+      return activeTask
+    })
+
+    setUpdatedTasks(updatedArray)
+    setUpdated(true)
+  }
+
+  const updateTask = () => {
+    if (updated) {
+      setActiveTasks(updatedTasks)
+      saveTasksInLocalStorage('tasks', updatedTasks)
+    }
+  }
+
   useEffect(() => {
     if (type === 'finished') {
       setIsChecked(true)
@@ -64,15 +88,22 @@ function Task({ id, taskName, type, tasksType }) {
 
   return (
     <div className="task">
-      <label className="task-item">
-        {taskName}
+      <div className="task-item">
         <input
           type="checkbox"
           checked={isChecked}
           onChange={finishTask}
         />
         <span className="checkmark"></span>
-      </label>
+        <label
+          contentEditable={tasks[0] === 'activeTasks'}
+          suppressContentEditableWarning
+          onInput={handleUpdateTask}
+          onBlur={updateTask}
+        >
+          {taskName}
+        </label>
+      </div>
 
       <button
         id="btn-remove-task"
