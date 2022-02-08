@@ -4,6 +4,8 @@ import TasksArea from '../TasksArea/index';
 import EmptyTasks from '../EmptyTasks/index';
 import { TasksProvider } from '../../context/tasksContext';
 import { getTasks } from '../../utils/localStorage'
+import MoonImage from '../../assets/moon.svg'
+import SunImage from '../../assets/sun.svg'
 import './style.css'
 
 function App() {
@@ -26,7 +28,13 @@ function App() {
 
   return (
     <Fragment>
-      <h1>To-do list</h1>
+      <header>
+        <h1>To-do list</h1>
+
+        <button>
+          <img src={SunImage} alt="Botão para trocar de tema" />
+        </button>
+      </header>
 
       <InputField activeTasks={activeTasks} setActiveTasks={setActiveTasks} />
       {
