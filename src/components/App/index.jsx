@@ -48,6 +48,9 @@ function App() {
       case 'light':
         setTheme('dark')
         break
+
+      default:
+        setTheme('light')
     }
   }
 
@@ -70,7 +73,7 @@ function App() {
     theme === 'light'
       ? toggleTheme(lightTheme)
       : toggleTheme(darkTheme)
-  }, [theme, toggleTheme, saveTheme, darkTheme, lightTheme])
+  }, [theme, toggleTheme, darkTheme, lightTheme])
 
   return (
     <Fragment>
