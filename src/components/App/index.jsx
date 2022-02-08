@@ -70,7 +70,7 @@ function App() {
     theme === 'light'
       ? toggleTheme(lightTheme)
       : toggleTheme(darkTheme)
-  }, [theme])
+  }, [theme, saveTheme, darkTheme, lightTheme])
 
   return (
     <Fragment>
