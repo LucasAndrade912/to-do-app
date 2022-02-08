@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital@0;1&display=swap');
 
 :root {
-  --bgColor: #F8F8F9;
-  --textColor: #000;
+  --bg-color: #F8F8F9;
+  --text-color: #000;
 }
 
 * {
@@ -13,7 +13,7 @@
 }
 
 body {
-  background-color: var(--bgColor);
+  background-color: var(--bg-color);
 }
 
 #root {
@@ -33,7 +33,7 @@ header h1 {
   text-align: center;
   font-weight: normal;
   font-size: 2.5rem;
-  color: var(--textColor);
+  color: var(--text-color);
 }
 
 header button {
