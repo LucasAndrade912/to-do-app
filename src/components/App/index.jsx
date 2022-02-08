@@ -19,25 +19,7 @@ function App() {
   const [activeTasks, setActiveTasks] = useState(getTasks('tasks'))
   const [finishedTasks, setFinishedTasks] = useState(getTasks('finished-tasks'))
 
-  const darkTheme = {
-    bgColor: '#464646',
-    textColor: '#FFF'
-  }
-
-  const lightTheme = {
-    bgColor: '#F8F8F9',
-    textColor: '#000'
-  }
-
   const transformKey = key => '--' + key.replace(/([A-Z])/, '-$1').toLowerCase()
-
-  const toggleTheme = themeObject => {
-    const root = document.querySelector(':root')
-
-    Object.keys(themeObject).forEach(key => {
-      root.style.setProperty(transformKey(key), themeObject[key])
-    })
-  }
 
   const handleImageClick = () => {
     switch (theme) {
@@ -68,12 +50,30 @@ function App() {
   }, [activeTasks])
 
   useEffect(() => {
+    const darkTheme = {
+      bgColor: '#464646',
+      textColor: '#FFF'
+    }
+  
+    const lightTheme = {
+      bgColor: '#F8F8F9',
+      textColor: '#000'
+    }
+    
+    const toggleTheme = themeObject => {
+      const root = document.querySelector(':root')
+  
+      Object.keys(themeObject).forEach(key => {
+        root.style.setProperty(transformKey(key), themeObject[key])
+      })
+    }
+
     saveTheme(theme)
     
     theme === 'light'
       ? toggleTheme(lightTheme)
       : toggleTheme(darkTheme)
-  }, [theme, toggleTheme, darkTheme, lightTheme])
+  }, [theme])
 
   return (
     <Fragment>
