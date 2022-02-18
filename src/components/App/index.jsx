@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 import InputField from '../InputField/index';
 import TasksArea from '../TasksArea/index';
@@ -6,7 +6,11 @@ import EmptyTasks from '../EmptyTasks/index';
 
 import { TasksProvider } from '../../context/tasksContext';
 
-import { getTasks, saveTheme, getTheme } from '../../utils/localStorage'
+import {
+  getFromLocalStorage,
+  saveTheme,
+  getTheme
+} from '../../utils/localStorage'
 
 import MoonImage from '../../assets/moon.svg'
 import SunImage from '../../assets/sun.svg'
@@ -14,10 +18,8 @@ import SunImage from '../../assets/sun.svg'
 import './style.css'
 
 function App() {
-  const [theme, setTheme] = useState(getTheme() || 'light')
-  const [tasks, setTasks] = useState([])
-  const [activeTasks, setActiveTasks] = useState(getTasks('tasks'))
-  const [finishedTasks, setFinishedTasks] = useState(getTasks('finished-tasks'))
+  const [theme, setTheme] = useState(getTheme())
+  const [todos, setTodos] = useState(getFromLocalStorage('todos'))
 
   const transformKey = key => '--' + key.replace(/([A-Z])/, '-$1').toLowerCase()
 
@@ -35,19 +37,6 @@ function App() {
         setTheme('light')
     }
   }
-
-  const contextValue = [
-    tasks,
-    setTasks,
-    activeTasks,
-    setActiveTasks,
-    setFinishedTasks,
-    finishedTasks
-  ]
-
-  useEffect(() => {
-    setTasks(['activeTasks', activeTasks])
-  }, [activeTasks])
 
   useEffect(() => {
     const darkTheme = {
@@ -76,7 +65,7 @@ function App() {
   }, [theme])
 
   return (
-    <Fragment>
+    <>
       <header>
         <h1>To-do list</h1>
 
@@ -89,15 +78,19 @@ function App() {
         </button>
       </header>
 
-      <InputField activeTasks={activeTasks} setActiveTasks={setActiveTasks} />
+      <InputField
+        todos={todos}
+        setTodos={setTodos}
+      />
+
       {
-        activeTasks.length === 0
+        todos.length === 0
           ? <EmptyTasks />
-          : <TasksProvider value={contextValue}>
+          : <TasksProvider value={{ todos, setTodos }}>
               <TasksArea />
             </TasksProvider>
       }
-    </Fragment>
+    </>
   )
 }
 

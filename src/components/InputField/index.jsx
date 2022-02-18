@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { saveTasksInLocalStorage } from '../../utils/localStorage'
+import { saveInLocalStorage } from '../../utils/localStorage'
 import './style.css'
 
-function InputField({ activeTasks, setActiveTasks }) {
+function InputField({ todos, setTodos }) {
   const [task, setTask] = useState('')
 
   const handleTask = event => setTask(event.target.value)
@@ -11,12 +11,18 @@ function InputField({ activeTasks, setActiveTasks }) {
     try {
       validateField()
 
-      let newArray = [ ...activeTasks ]
-      newArray.push({ type: 'active', taskName: task })
-  
+      let copyTodos = [ ...todos ]
+
+      if (copyTodos.length === 0) {
+        copyTodos.push({ id: 1, task, finished: false })
+      } else {
+        const newId = copyTodos[copyTodos.length - 1].id + 1
+        copyTodos.push({ id: newId, task, finished: false })
+      }
+
       setTask('')
-      saveTasksInLocalStorage('tasks', newArray)
-      setActiveTasks(newArray) 
+      setTodos(copyTodos)
+      saveInLocalStorage('todos', copyTodos)
     } catch (error) {
       alert(error.message)
     }

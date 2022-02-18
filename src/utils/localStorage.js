@@ -1,9 +1,9 @@
-export const saveTasksInLocalStorage = (key, tasksArray) => {
-  localStorage.setItem(key, JSON.stringify(tasksArray))
+export const saveInLocalStorage = (key, item) => {
+  localStorage.setItem(key, JSON.stringify(item))
 }
 
-export const getTasks = key => JSON.parse(localStorage.getItem(key)) || []
+export const getFromLocalStorage = key => JSON.parse(localStorage.getItem(key)) || []
 
 export const saveTheme = theme => localStorage.setItem('theme', theme)
 
-export const getTheme = () => localStorage.getItem('theme')
+export const getTheme = () => localStorage.getItem('theme') || 'light'

@@ -1,90 +1,70 @@
 import { useContext, useState, useEffect } from 'react'
+
 import { TasksContext } from '../../context/tasksContext'
-import { saveTasksInLocalStorage } from '../../utils/localStorage'
+import { saveInLocalStorage } from '../../utils/localStorage'
+
 import './style.css'
 
-function Task({ id, taskName, type, tasksType }) {
+function Task({ id, task, finished }) {
   const [isChecked, setIsChecked] = useState(false)
   const [updatedTasks, setUpdatedTasks] = useState([])
   const [updated, setUpdated] = useState(false)
 
-  const [
-    tasks,
-    setTasks,
-    activeTasks,
-    setActiveTasks,
-    setFinishedTasks,
-    finishedTasks,
-  ] = useContext(TasksContext)
+  const { todos, setTodos } = useContext(TasksContext)
 
   const removeTask = () => {
-    let key, state, setState = null
-
-    if (tasks[0] === 'activeTasks') {
-      key = 'tasks'
-      state = activeTasks
-      setState = setActiveTasks
-    } else {
-      key = 'finished-tasks'
-      state = finishedTasks
-      setState = setFinishedTasks
-    }
-
-    let newArray = [ ...state ]
-    newArray.splice(id, 1)
-
-    saveTasksInLocalStorage(key, newArray)
-    setTasks([tasks[0], newArray])
-    setState(newArray)
-  }
-
-  const saveFinishedTasks = () => {
-    let newArrayFinishedTasks = [ ...finishedTasks ]
-    newArrayFinishedTasks.push({ type: 'finished', taskName: taskName })
-    setFinishedTasks(newArrayFinishedTasks)
-    saveTasksInLocalStorage('finished-tasks', newArrayFinishedTasks)
+    let copyTodos = [ ...todos ]
+    copyTodos = copyTodos.filter(task => task.id !== id)
+    
+    setTodos(copyTodos)
+    saveInLocalStorage('todos', copyTodos)
   }
 
   const finishTask = () => {
-    if (type !== 'finished' && tasksType !== 'all') {
-      let newArray = [ ...activeTasks ]
-      newArray.splice(id, 1)
+    let copyTodos = [ ...todos ]
+    copyTodos = copyTodos.map(task => {
+      if (task.id === id) {
+        task.finished = true
+      }
 
-      saveTasksInLocalStorage('tasks', newArray)
-      setActiveTasks(newArray)
-      saveFinishedTasks()
-    }
+      return task
+    })
+
+    setTodos(copyTodos)
+    saveInLocalStorage('todos', copyTodos)
   }
 
   const handleUpdateTask = event => {
     const { textContent } = event.currentTarget
 
-    const updatedArray = activeTasks.map((activeTask, index) => {
-      if (index === id) {
-        activeTask.taskName = textContent
+    let copyTodos = [ ...todos ]
+
+    copyTodos = copyTodos.map(task => {
+      if (task.id === id) {
+        task.task = textContent
       }
-      
-      return activeTask
+
+      return task
     })
 
-    setUpdatedTasks(updatedArray)
     setUpdated(true)
+    setUpdatedTasks(copyTodos)
   }
 
   const updateTask = () => {
     if (updated) {
-      setActiveTasks(updatedTasks)
-      saveTasksInLocalStorage('tasks', updatedTasks)
+      setTodos(updatedTasks)
+      saveInLocalStorage('todos', updatedTasks)
     }
   }
 
   useEffect(() => {
-    if (type === 'finished') {
+    if (finished) {
       setIsChecked(true)
     } else {
       setIsChecked(false)
     }
-  }, [type])
+  }, [finished])
 
   return (
     <div className="task">
@@ -96,22 +76,18 @@ function Task({ id, taskName, type, tasksType }) {
         />
         <span className="checkmark"></span>
         <label
-          contentEditable={tasks[0] === 'activeTasks'}
+          contentEditable={!finished}
           suppressContentEditableWarning
           onInput={handleUpdateTask}
           onBlur={updateTask}
         >
-          {taskName}
+          {task}
         </label>
       </div>
 
       <button
         id="btn-remove-task"
-        onClick={
-          tasksType !== 'all'
-            ? removeTask
-            : null
-        }
+        onClick={removeTask}
       >
           x
       </button>
