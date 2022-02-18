@@ -27,7 +27,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x]  O usuário poderá ver as tarefas concluídas e ativas
 - [x]  O usuário poderá ver as todas tarefas
 - [x]  O usuário poderá editar uma tarefa clicando no texto da tarefa
-- [ ]  Dark mode
+- [x]  Dark mode
 
 ## 🚀 Instalando to-do-app
 
