@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 
+import Header from '../Header';
 import InputField from '../InputField/index';
 import TasksArea from '../TasksArea/index';
 import EmptyTasks from '../EmptyTasks/index';
@@ -11,9 +12,6 @@ import {
   saveTheme,
   getTheme
 } from '../../utils/localStorage'
-
-import MoonImage from '../../assets/moon.svg'
-import SunImage from '../../assets/sun.svg'
 
 import './style.css'
 
@@ -66,17 +64,10 @@ function App() {
 
   return (
     <>
-      <header>
-        <h1>To-do list</h1>
-
-        <button onClick={handleImageClick}>
-          <img src={
-            theme === 'light'
-              ? SunImage
-              : MoonImage
-          } alt="Botão para trocar de tema" />
-        </button>
-      </header>
+      <Header
+        handleImageClick={handleImageClick}
+        theme={theme}
+      />
 
       <InputField
         todos={todos}
