@@ -6,6 +6,14 @@
 
 > Um projeto clássico de lista de tarefas para você se organizar melhor, basta inserir a tarefa que desejar um marcar como concluída quando finaliza-la.
 
+## Dekstop Version
+
+<img src="layout/layout-pc.png" alt="Desktop Layout" />
+
+## Mobile Version
+
+<img src="layout/layout-celular.jpg" alt="Mobile Layout" width="300" />
+
 ## 🛠 Feito com
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
