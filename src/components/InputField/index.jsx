@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { saveInLocalStorage } from '../../utils/localStorage'
 import './style.css'
 
 function InputField({ todos, setTodos }) {
   const [task, setTask] = useState('')
+  const inputRef = useRef(null)
 
   const handleTask = event => setTask(event.target.value)
 
@@ -32,6 +33,10 @@ function InputField({ todos, setTodos }) {
     if (task.trim() === '') throw new Error('Por favor, preencha o campo de entrada')
   }
 
+  useEffect(() => {
+    inputRef.current.focus()
+  }, [])
+
   return (
     <div id="input-field">
       <label htmlFor="input-task">Adicionar tarefa</label>
@@ -42,6 +47,7 @@ function InputField({ todos, setTodos }) {
         value={task}
         onChange={handleTask}
         autoComplete="off"
+        ref={inputRef}
       />
       <button onClick={addTask}>
         <span>+</span>
