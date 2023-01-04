@@ -1,4 +1,4 @@
-# To-do-app
+# 📝 To Do App
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/LucasAndrade912/to-do-app?style=for-the-badge)
 ![GitHub language count](https://img.shields.io/github/languages/count/LucasAndrade912/to-do-app?style=for-the-badge)
@@ -6,15 +6,15 @@
 
 > Um projeto clássico de lista de tarefas para você se organizar melhor, basta inserir a tarefa que desejar um marcar como concluída quando finaliza-la.
 
-## Dekstop Version
+## 🖥️ Dekstop
 
 <img src="layout/layout-pc.png" alt="Desktop Layout" />
 
-## Mobile Version
+## 📱 Mobile
 
 <img src="layout/layout-celular.jpg" alt="Mobile Layout" width="300" />
 
-## 🛠 Feito com
+## 🛠️ Techs
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
@@ -37,15 +37,13 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x]  O usuário poderá editar uma tarefa clicando no texto da tarefa
 - [x]  Dark mode
 
-## 🚀 Instalando to-do-app
+## 🛸 Instalação e Execução do projeto
 
 Para clonar este repositório utilize o comando:
 
 ```bash
 git clone https://github.com/LucasAndrade912/to-do-app.git
 ```
-
-## 🛸 Executando o projeto
 
 Instale as dependências do projeto:
 
